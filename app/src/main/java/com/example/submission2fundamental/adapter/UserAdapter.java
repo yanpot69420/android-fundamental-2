@@ -11,15 +11,20 @@ import com.example.submission2fundamental.DetailActivity;
 import com.example.submission2fundamental.databinding.ItemUserBinding;
 import com.example.submission2fundamental.model.User;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    private final ArrayList<User> list;
+    private List<User> list;
     private final Context context;
 
-    public UserAdapter(ArrayList<User> list, Context context) {
+    public UserAdapter(List<User> list, Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public Integer getSize() {
+        return list.size();
     }
 
     @NonNull
