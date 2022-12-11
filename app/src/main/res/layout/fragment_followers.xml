@@ -18,4 +18,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
+    <TextView
+        style="@style/item_text"
+        android:id="@+id/textHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/no_followers"/>
+
 </FrameLayout>

@@ -56,5 +56,4 @@
         app:layout_constraintStart_toEndOf="@+id/userFollowers"
         app:layout_constraintTop_toTopOf="@+id/userFollowers" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

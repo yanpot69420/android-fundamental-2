@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +22,9 @@ import cz.msebera.android.httpclient.Header;
 
 public class SyncHelper {
 
-    public static void getUserList(Context context, String url, RecyclerView rvList, ProgressBar progressBar) {
+    public static void getUserList(Context context, String url, RecyclerView rvList, ProgressBar progressBar, TextView textHolder) {
+        textHolder.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         AsyncHttpClient client = new AsyncHttpClient();
         client.addHeader("User-Agent", "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");
         client.get(url, new AsyncHttpResponseHandler() {
@@ -57,6 +60,9 @@ public class SyncHelper {
 
                     UserAdapter adapter = new UserAdapter(list, context);
                     rvList.setAdapter(adapter);
+                    if(adapter.getItemCount() == 0) {
+                        textHolder.setVisibility(View.VISIBLE);
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -66,6 +72,7 @@ public class SyncHelper {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                textHolder.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.INVISIBLE);
                 String errorMessage;
                 switch (statusCode) {

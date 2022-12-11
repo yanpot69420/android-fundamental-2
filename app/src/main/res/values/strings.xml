@@ -8,4 +8,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_settings">Settings</string>
+    <string name="title_no_data">Search to Show User Data</string>
+    <string name="no_following">There is no following</string>
+    <string name="no_followers">There is no followers</string>
 </resources>

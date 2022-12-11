@@ -66,9 +66,8 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0).setText("FOLLOWERS (" + user.getFollowersCount() + ")"));
-        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(1).setText("FOLLOWING (" + user.getFollowingCount() + ")"));
-
+        binding.tabLayout.getTabAt(0).setText("FOLLOWERS (" + user.getFollowersCount() + ")");
+        binding.tabLayout.getTabAt(1).setText("FOLLOWING (" + user.getFollowingCount() + ")");
     }
 
     @Override
@@ -83,6 +82,4 @@ public class DetailActivity extends AppCompatActivity {
         binding.detailUsername.setText(new StringBuilder("@").append(user.getUsername()));
         binding.detailId.setText(new StringBuilder("ID : ").append(user.getId()));
     }
-
-
 }
