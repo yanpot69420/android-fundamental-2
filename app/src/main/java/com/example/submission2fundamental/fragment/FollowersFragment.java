@@ -55,7 +55,6 @@ public class FollowersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.rvListFollowers.setLayoutManager(new LinearLayoutManager(getContext()));
-        Toast.makeText(getContext(), FOLLOWERS_URL, Toast.LENGTH_SHORT).show();
         SyncHelper.getUserList(getContext(), FOLLOWERS_URL, binding.rvListFollowers, binding.progressBar);
     }
 }

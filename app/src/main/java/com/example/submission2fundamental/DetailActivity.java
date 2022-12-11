@@ -2,19 +2,13 @@ package com.example.submission2fundamental;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.os.Bundle;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.submission2fundamental.adapter.FragmentAdapter;
 import com.example.submission2fundamental.databinding.ActivityDetailBinding;
+import com.example.submission2fundamental.helper.SyncHelper;
 import com.example.submission2fundamental.model.User;
 import com.google.android.material.tabs.TabLayout;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-
-import cz.msebera.android.httpclient.Header;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -34,7 +28,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     void setupFragment() {
-        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0).setText("FOLLOWERS ()"));
+        Integer followersCount = SyncHelper.countFollow(user.getFollowers());
+        Integer followingCount = SyncHelper.countFollow(user.getFollowing());
+        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0).setText("FOLLOWERS (" + followersCount + ")"));
+        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(1).setText("FOLLOWING (" + followingCount + ")"));
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), getLifecycle(), user.getFollowers(), user.getFollowing());
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

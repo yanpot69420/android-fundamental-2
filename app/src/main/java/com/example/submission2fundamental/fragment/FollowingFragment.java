@@ -55,7 +55,6 @@ public class FollowingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toast.makeText(getContext(), FOLLOWING_URL, Toast.LENGTH_SHORT).show();
         binding.rvListFollowing.setLayoutManager(new LinearLayoutManager(getContext()));
         SyncHelper.getUserList(getActivity(), FOLLOWING_URL, binding.rvListFollowing, binding.progressBar);
     }

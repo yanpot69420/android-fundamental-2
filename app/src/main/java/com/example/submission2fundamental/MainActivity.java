@@ -7,27 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.example.submission2fundamental.adapter.UserAdapter;
 import com.example.submission2fundamental.databinding.ActivityMainBinding;
 import com.example.submission2fundamental.helper.SyncHelper;
-import com.example.submission2fundamental.model.User;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "GITHUB User's Search";

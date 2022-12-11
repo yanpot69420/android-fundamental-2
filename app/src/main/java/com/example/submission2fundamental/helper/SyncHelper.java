@@ -20,9 +20,8 @@ import cz.msebera.android.httpclient.Header;
 public class SyncHelper {
 
     public static void getUserList(Context context, String url, RecyclerView rvList, ProgressBar progressBar) {
-        Toast.makeText(context, context.toString(), Toast.LENGTH_SHORT).show();
         AsyncHttpClient client = new AsyncHttpClient();
-        client.addHeader("User-Agent", "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");
+        client.addHeader("User-Agent", "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");
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -40,6 +39,7 @@ public class SyncHelper {
                     else {
                         responseArray = new JSONArray(result);
                     }
+//                    Toast.makeText(context, "Ini Result: " + result, Toast.LENGTH_LONG).show();
                     for (int i = 0; i < responseArray.length(); i++) {
                         JSONObject object = responseArray.getJSONObject(i);
                         String username = object.getString("login");
@@ -50,8 +50,6 @@ public class SyncHelper {
                         following = following.substring(0 , following.length()-13);
                         User user;
                         user = new User(avatar, id, username, followers, following);
-                        user.setFollowersCount(countFollow(followers));
-                        user.setFollowingCount(countFollow(following));
                         list.add(user);
                     }
 
@@ -87,13 +85,15 @@ public class SyncHelper {
         });
     }
 
-    private static Integer countFollow(String url) {
+    public static Integer countFollow(String url) {
         String result = "0";
         AsyncHttpClient client = new AsyncHttpClient();
         client.addHeader("User-Agent", "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");
+//        client.addHeader("Authorization", "token <Personal Access Token>");
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Log.wtf("What the heck", "Success coyy");
                 String result = new String(responseBody);
                 try {
                     JSONArray responseArray = new JSONArray(result);
@@ -108,7 +108,6 @@ public class SyncHelper {
                 Log.wtf("Error to Count Follow", error.getMessage());
             }
         });
-
         return Integer.valueOf(result);
     }
 }
