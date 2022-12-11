@@ -38,6 +38,6 @@ public class FollowersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.rvListFollowers.setLayoutManager(new LinearLayoutManager(getContext()));
-        SyncHelper.getUserList(getContext(), FOLLOWERS_URL, binding.rvListFollowers, binding.progressBar, binding.textHolder);
+        SyncHelper.getUserList(getContext(), FOLLOWERS_URL, binding.progressBar, binding.textHolder);
     }
 }

@@ -22,7 +22,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class SyncHelper {
 
-    public static void getUserList(Context context, String url, RecyclerView rvList, ProgressBar progressBar, TextView textHolder) {
+    public static ArrayList<User> getUserList(Context context, String url, ProgressBar progressBar, TextView textHolder) {
+        ArrayList<User> userList = new ArrayList<>();
         textHolder.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
         AsyncHttpClient client = new AsyncHttpClient();
@@ -31,7 +32,6 @@ public class SyncHelper {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 progressBar.setVisibility(View.INVISIBLE);
-                ArrayList<User> list = new ArrayList<>();
                 String result = new String(responseBody);
                 JSONObject responseObject;
                 JSONArray responseArray;
@@ -55,13 +55,7 @@ public class SyncHelper {
                         following = following.substring(0 , following.length()-13);
                         User user;
                         user = new User(avatar, id, username, followers, following);
-                        list.add(user);
-                    }
-
-                    UserAdapter adapter = new UserAdapter(list, context);
-                    rvList.setAdapter(adapter);
-                    if(adapter.getItemCount() == 0) {
-                        textHolder.setVisibility(View.VISIBLE);
+                        userList.add(user);
                     }
 
                 } catch (JSONException e) {
@@ -92,5 +86,6 @@ public class SyncHelper {
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+        return userList;
     }
 }

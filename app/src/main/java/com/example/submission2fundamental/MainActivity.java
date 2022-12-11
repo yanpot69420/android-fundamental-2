@@ -9,8 +9,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
+import com.example.submission2fundamental.adapter.UserAdapter;
 import com.example.submission2fundamental.databinding.ActivityMainBinding;
 import com.example.submission2fundamental.helper.SyncHelper;
+import com.example.submission2fundamental.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 binding.fieldInput.clearFocus();
                 String searchUrl = "https://api.github.com/search/users?q=" + query;
-                SyncHelper.getUserList(MainActivity.this, searchUrl, binding.rvList, binding.progressBar, binding.textHolder);
+                configListAdapter(searchUrl);
                 return true;
             }
 
@@ -49,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.option_menu, menu);
         return true;
+    }
+
+    private void configListAdapter(String searchUrl) {
+        UserAdapter adapter = new UserAdapter(SyncHelper.getUserList(MainActivity.this, searchUrl, binding.progressBar, binding.textHolder), MainActivity.this);
+        binding.rvList.setAdapter(adapter);
     }
 
 }
