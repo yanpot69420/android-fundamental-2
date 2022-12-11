@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.submission2fundamental.DetailActivity;
 import com.example.submission2fundamental.MainActivity;
 import com.example.submission2fundamental.adapter.UserAdapter;
 import com.example.submission2fundamental.model.User;
@@ -39,7 +41,7 @@ public class SyncHelper {
                     else {
                         responseArray = new JSONArray(result);
                     }
-//                    Toast.makeText(context, "Ini Result: " + result, Toast.LENGTH_LONG).show();
+
                     for (int i = 0; i < responseArray.length(); i++) {
                         JSONObject object = responseArray.getJSONObject(i);
                         String username = object.getString("login");
@@ -83,31 +85,5 @@ public class SyncHelper {
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public static Integer countFollow(String url) {
-        String result = "0";
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.addHeader("User-Agent", "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");
-//        client.addHeader("Authorization", "token <Personal Access Token>");
-        client.get(url, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Log.wtf("What the heck", "Success coyy");
-                String result = new String(responseBody);
-                try {
-                    JSONArray responseArray = new JSONArray(result);
-                    result = String.valueOf(responseArray.length());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.wtf("Error to Count Follow", error.getMessage());
-            }
-        });
-        return Integer.valueOf(result);
     }
 }

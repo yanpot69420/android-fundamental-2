@@ -3,18 +3,24 @@ package com.example.submission2fundamental;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+
 import com.bumptech.glide.Glide;
 import com.example.submission2fundamental.adapter.FragmentAdapter;
 import com.example.submission2fundamental.databinding.ActivityDetailBinding;
+import com.example.submission2fundamental.fragment.FollowersFragment;
 import com.example.submission2fundamental.helper.SyncHelper;
 import com.example.submission2fundamental.model.User;
 import com.google.android.material.tabs.TabLayout;
 
 public class DetailActivity extends AppCompatActivity {
 
-    ActivityDetailBinding binding;
+    private ActivityDetailBinding binding;
     public final static String USER_KEY = "USER_KEY";
+    private final String TAG = "Detail User";
     private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +28,17 @@ public class DetailActivity extends AppCompatActivity {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setTitle(TAG);
+        }
+
         user = getIntent().getParcelableExtra(USER_KEY);
         addUserView();
         setupFragment();
     }
 
     void setupFragment() {
-        Integer followersCount = SyncHelper.countFollow(user.getFollowers());
-        Integer followingCount = SyncHelper.countFollow(user.getFollowing());
-        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0).setText("FOLLOWERS (" + followersCount + ")"));
-        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(1).setText("FOLLOWING (" + followingCount + ")"));
+
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), getLifecycle(), user.getFollowers(), user.getFollowing());
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -58,6 +65,17 @@ public class DetailActivity extends AppCompatActivity {
                 binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position));
             }
         });
+
+        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0).setText("FOLLOWERS (" + user.getFollowersCount() + ")"));
+        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(1).setText("FOLLOWING (" + user.getFollowingCount() + ")"));
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.option_menu, menu);
+        return true;
     }
 
     void addUserView() {

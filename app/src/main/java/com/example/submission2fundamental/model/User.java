@@ -9,8 +9,8 @@ public class User implements Parcelable{
     private String username;
     private String followers;
     private String following;
-    private Integer followersCount;
-    private Integer followingCount;
+    private Integer followersCount = 0;
+    private Integer followingCount = 0;
 
     public User(String avatar, String id, String username, String followers, String following) {
         this.avatar = avatar;

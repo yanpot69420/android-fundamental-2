@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +14,8 @@ import com.example.submission2fundamental.helper.SyncHelper;
 
 public class FollowersFragment extends Fragment {
 
-    FragmentFollowersBinding binding;
-    private final String FOLLOWERS_URL;
+    private FragmentFollowersBinding binding;
+    public final String FOLLOWERS_URL;
 
     public FollowersFragment(String FOLLOWERS_URL) {
         this.FOLLOWERS_URL = FOLLOWERS_URL;

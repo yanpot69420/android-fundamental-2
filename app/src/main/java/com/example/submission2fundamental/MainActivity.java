@@ -1,21 +1,19 @@
 package com.example.submission2fundamental;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import com.example.submission2fundamental.databinding.ActivityMainBinding;
 import com.example.submission2fundamental.helper.SyncHelper;
 
 public class MainActivity extends AppCompatActivity {
+
     private final String TAG = "GITHUB User's Search";
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         if(getSupportActionBar()!=null) {
             getSupportActionBar().setTitle(TAG);
         }
+
         String url = "https://api.github.com/search/users?q=amir";
         binding.rvList.setLayoutManager(new LinearLayoutManager(this));
         SyncHelper.getUserList(this, url, binding.rvList, binding.progressBar);
@@ -37,11 +36,4 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.settings) {
-            startActivity(new Intent(MainActivity.this, DetailActivity.class));
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
