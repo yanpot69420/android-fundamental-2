@@ -23,8 +23,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         this.context = context;
     }
 
-    public Integer getSize() {
-        return list.size();
+    public void refresh (List<User> users) {
+        this.list = users;
     }
 
     @NonNull

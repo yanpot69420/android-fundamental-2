@@ -8,6 +8,7 @@ import java.util.List;
 
 public class MainViewModel extends ViewModel {
     private MutableLiveData<List<User>> usersLiveData;
+    private String urlModel = "https://api.github.com/search/users?q=yanpot69420";
 
     public LiveData<List<User>> getUsersLiveData(List<User> users) {
         if(usersLiveData == null) {
@@ -19,5 +20,13 @@ public class MainViewModel extends ViewModel {
 
     public void setUsersLiveData(List<User> users) {
         usersLiveData.setValue(users);
+    }
+
+    public String getUrlModel() {
+        return urlModel;
+    }
+
+    public void setUrlModel(String urlModel) {
+        this.urlModel = urlModel;
     }
 }

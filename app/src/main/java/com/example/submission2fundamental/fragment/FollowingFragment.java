@@ -39,6 +39,6 @@ public class FollowingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.rvListFollowing.setLayoutManager(new LinearLayoutManager(getContext()));
-        SyncHelper.getUserList(getActivity(), FOLLOWING_URL, binding.progressBar, binding.textHolder);
+        SyncHelper.getUserList(getActivity(), FOLLOWING_URL, binding.progressBar, binding.textHolder, binding.rvListFollowing);
     }
 }

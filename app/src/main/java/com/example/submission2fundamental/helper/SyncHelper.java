@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.submission2fundamental.MainActivity;
+import com.example.submission2fundamental.adapter.UserAdapter;
 import com.example.submission2fundamental.model.User;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -23,7 +24,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class SyncHelper {
 
-    public static List<User> getUserList(Context context, String url, ProgressBar progressBar, TextView textHolder) {
+    public static List<User> getUserList(Context context, String url, ProgressBar progressBar, TextView textHolder, RecyclerView recyclerView) {
         List<User> userList = new ArrayList<>();
         textHolder.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
@@ -58,6 +59,9 @@ public class SyncHelper {
                         user = new User(avatar, id, username, followers, following);
                         userList.add(user);
                     }
+                    UserAdapter adapter = new UserAdapter(userList, context);
+                    recyclerView.setAdapter(adapter);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.wtf("TAG", e.getMessage());
