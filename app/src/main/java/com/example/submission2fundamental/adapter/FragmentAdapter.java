@@ -25,11 +25,11 @@ public class FragmentAdapter extends FragmentStateAdapter {
         Fragment fragment;
         switch (position) {
             case 1:
-                fragment = new FollowingFragment(followingLink);
+                fragment = FollowingFragment.newInstance(followingLink);
                 break;
             case 0:
             default:
-                fragment = new FollowersFragment(followersLink);
+                fragment = FollowersFragment.newInstance(followersLink);
                 break;
         }
         return fragment;

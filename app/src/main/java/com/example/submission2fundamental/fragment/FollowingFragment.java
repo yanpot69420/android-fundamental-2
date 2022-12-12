@@ -5,27 +5,36 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.submission2fundamental.databinding.FragmentFollowingBinding;
 import com.example.submission2fundamental.helper.SyncHelper;
+import com.example.submission2fundamental.model.FollowingViewModel;
 
 public class FollowingFragment extends Fragment {
 
     FragmentFollowingBinding binding;
+    private FollowingViewModel viewModel;
 
-    private final String FOLLOWING_URL;
+    public FollowingFragment() {
 
-    public FollowingFragment(String FOLLOWING_URL) {
-        this.FOLLOWING_URL = FOLLOWING_URL;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+    public static FollowingFragment newInstance(String url) {
+        Bundle bundle = new Bundle();
+        bundle.putString("URL", url);
+        FollowingFragment fragment = new FollowingFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -39,6 +48,9 @@ public class FollowingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.rvListFollowing.setLayoutManager(new LinearLayoutManager(getContext()));
-        SyncHelper.getUserList(getActivity(), FOLLOWING_URL, binding.progressBar, binding.textHolder, binding.rvListFollowing);
+
+        viewModel = new ViewModelProvider(this).get(FollowingViewModel.class);
+        viewModel.setUrlFollowers(getArguments().getString("URL"));
+        SyncHelper.getUserList(getActivity(), viewModel.getUrlFollowers(), binding.progressBar, binding.textHolder, binding.rvListFollowing);
     }
 }

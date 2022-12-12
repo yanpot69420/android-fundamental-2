@@ -38,7 +38,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     void setupFragment() {
-
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), getLifecycle(), user.getFollowers(), user.getFollowing());
         binding.viewPager.setAdapter(adapter);
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
