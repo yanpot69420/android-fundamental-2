@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.submission2fundamental.BuildConfig;
 import com.example.submission2fundamental.MainActivity;
 import com.example.submission2fundamental.adapter.UserAdapter;
 import com.example.submission2fundamental.model.User;
@@ -29,7 +30,7 @@ public class SyncHelper {
         textHolder.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
         AsyncHttpClient client = new AsyncHttpClient();
-        client.addHeader("User-Agent", "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");
+        client.addHeader("User-Agent", BuildConfig.API_KEY);
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

@@ -2,17 +2,12 @@ package com.example.submission2fundamental;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.Toast;
-
-import com.example.submission2fundamental.adapter.UserAdapter;
 import com.example.submission2fundamental.databinding.ActivityMainBinding;
 import com.example.submission2fundamental.helper.SyncHelper;
 import com.example.submission2fundamental.model.MainViewModel;
@@ -24,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private final String TAG = "GITHUB User's Search";
     private ActivityMainBinding binding;
     private MainViewModel viewModel;
-    private UserAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         if(getSupportActionBar()!=null) {
             getSupportActionBar().setTitle(TAG);
         }
-        Toast.makeText(this, "onCreate jalan", Toast.LENGTH_SHORT).show();
+
         binding.fieldInput.clearFocus();
         binding.progressBar.setVisibility(View.INVISIBLE);
         binding.rvList.setLayoutManager(new LinearLayoutManager(this));
