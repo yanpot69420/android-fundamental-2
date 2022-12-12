@@ -48,7 +48,6 @@ public class FollowingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.rvListFollowing.setLayoutManager(new LinearLayoutManager(getContext()));
-
         viewModel = new ViewModelProvider(this).get(FollowingViewModel.class);
         viewModel.setUrlFollowers(getArguments().getString("URL"));
         SyncHelper.getUserList(getActivity(), viewModel.getUrlFollowers(), binding.progressBar, binding.textHolder, binding.rvListFollowing);
