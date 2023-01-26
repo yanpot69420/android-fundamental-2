@@ -6,5 +6,6 @@
     </style>
     <style name="item_text">
         <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

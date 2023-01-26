@@ -13,10 +13,10 @@ public class FragmentAdapter extends FragmentStateAdapter {
 
     private final String followersLink, followingLink;
 
-    public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String followersLink, String followingLink) {
+    public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String url) {
         super(fragmentManager, lifecycle);
-        this.followersLink = followersLink;
-        this.followingLink = followingLink;
+        this.followersLink = url + "/followers";
+        this.followingLink = url + "/following";
     }
 
     @NonNull

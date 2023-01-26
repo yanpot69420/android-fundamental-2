@@ -11,4 +11,8 @@
     <string name="title_no_data">Search to Show User Data</string>
     <string name="no_following">There is no following</string>
     <string name="no_followers">There is no followers</string>
+    <string name="title_name">Name</string>
+    <string name="title_company">Company</string>
+    <string name="title_blog">Blog</string>
+    <string name="title_favorites">Favorites</string>
 </resources>

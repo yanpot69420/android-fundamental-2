@@ -12,12 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.submission2fundamental.databinding.FragmentFollowersBinding;
 import com.example.submission2fundamental.helper.SyncHelper;
-import com.example.submission2fundamental.model.FollowersViewModel;
+import com.example.submission2fundamental.model.FollowViewModel;
 
 public class FollowersFragment extends Fragment {
 
     private FragmentFollowersBinding binding;
-    private FollowersViewModel viewModel;
+    private FollowViewModel viewModel;
 
     public FollowersFragment() {
 
@@ -48,7 +48,7 @@ public class FollowersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.rvListFollowers.setLayoutManager(new LinearLayoutManager(getContext()));
-        viewModel = new ViewModelProvider(this).get(FollowersViewModel.class);
+        viewModel = new ViewModelProvider(this).get(FollowViewModel.class);
         viewModel.setUrlFollowers(getArguments().getString("URL"));
         SyncHelper.getUserList(getContext(), viewModel.getUrlFollowers(), binding.progressBar, binding.textHolder, binding.rvListFollowers);
     }

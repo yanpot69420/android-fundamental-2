@@ -36,8 +36,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         Glide.with(context).load(user.getAvatar()).into(holder.binding.userImage);
         holder.binding.userName.setText(new StringBuilder("@").append(user.getUsername()));
         holder.binding.userId.setText(new StringBuilder("ID : ").append(user.getId()));
-        holder.binding.userFollowers.setText(new StringBuilder("Followers : ").append(user.getFollowersCount()));
-        holder.binding.userFollowing.setText(new StringBuilder("Following : ").append(user.getFollowingCount()));
+        holder.binding.userType.setText(new StringBuilder("Type : ").append(user.getType()));
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra(DetailActivity.USER_KEY, user);

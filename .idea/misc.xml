@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/drawable/background.xml" value="0.111" />
-        <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/activity_detail.xml" value="0.2064814814814815" />
+        <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.2145" />
+        <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/activity_detail.xml" value="0.14256756756756755" />
+        <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/activity_favorite.xml" value="0.17677368212445502" />
         <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/activity_main.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/fragment_followers.xml" value="0.17677368212445502" />
         <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/fragment_following.xml" value="0.17677368212445502" />
+        <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/item_favorite.xml" value="0.2" />
         <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/layout/item_user.xml" value="0.23125" />
         <entry key="..\:/Users/62821/AndroidStudioProjects/Dicoding/Submission2Fundamental/app/src/main/res/menu/option_menu.xml" value="0.1759809750297265" />
       </map>
